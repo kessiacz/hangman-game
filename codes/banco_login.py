@@ -56,7 +56,7 @@ class Login(tk.Frame):
 		self.voltarInicio2.pack(fill=tk.X)
 
 	def loginButton(self):
-		conexao = sqlite3.connect('db/jogadores.db')
+		conexao = sqlite3.connect('../hangman-game/db/jogadores.db')
 		cursor = conexao.cursor()
 		cursor.execute('SELECT * from jogadores')
 		resultado = cursor.fetchall()
@@ -92,7 +92,7 @@ class Login(tk.Frame):
 		conexao.close()
 
 	def button_create(self):
-		conexao = sqlite3.connect('jogadores.db')
+		conexao = sqlite3.connect('../hangman-game/db/jogadores.db')
 		cursor = conexao.cursor()
 		cursor.execute('SELECT * from jogadores')
 		resultado = cursor.fetchall()
@@ -122,7 +122,7 @@ class Login(tk.Frame):
 	def playGame(self):
 		self.iniciarBut.destroy()
 
-		self.img = tk.PhotoImage(file="imgs/image1.png")
+		self.img = tk.PhotoImage(file="../hangman-game/imgs/image1.png")
 		self.img = self.img.subsample(4, 4)
 
 		self.background = tk.Label(image=self.img, bd=0)

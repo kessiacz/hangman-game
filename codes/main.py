@@ -11,7 +11,7 @@ class main(tk.Frame):
         def __init__(self, *args, **kwargs):
                 tk.Frame.__init__(self, *args, **kwargs)
 
-                self.img = tk.PhotoImage(file="imgs/image2.png")
+                self.img = tk.PhotoImage(file="../hangman-game/imgs/image2.png")
                 self.img = self.img.subsample(4, 4)
 
                 self.background = tk.Label(image=self.img, bd=0)
