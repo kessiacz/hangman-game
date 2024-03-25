@@ -62,7 +62,7 @@ class Forca(Frame):
             neste caso esta sendo usando o arquivo 'palavras_forca.txt'
             que deve estar no mesmo diretório. 
         """           
-        x = open('db/palavras_forca.txt', 'r')
+        x = open('../hangman-game/db/palavras_forca.txt', 'r', encoding='utf-8')
         lista_de_palavras=x.readlines()
         x.close()
         palavra = random.choice(lista_de_palavras).split('\n')[0].upper()
