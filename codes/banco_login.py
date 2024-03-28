@@ -61,13 +61,8 @@ class Login(tk.Frame):
 		cursor.execute('SELECT * from jogadores')
 		resultado = cursor.fetchall()
 		login_successful = False
-		
-		print("User input:", self.userLog2.get())
-		print("Password input:", self.keyLog2.get())
 
 		for dado in resultado:
-			print("Database user:", dado[0])
-			print("Database password:", dado[1])
 			if self.userLog2.get() == dado[0] and self.keyLog2.get() == dado[1]:
 				login_successful = True
 				break
@@ -170,3 +165,9 @@ class Login(tk.Frame):
 		self.bLog.pack(fill=tk.X, pady=5)
 		self.bCreat = tk.Button(self, font=("Helvetica", 12, "bold"), text="REGISTER", foreground='#fcca28', bg='#363636', padx=80, pady=10, command=self.criar_login)
 		self.bCreat.pack(fill=tk.X)
+
+	def update_acertos(username, acertos):
+		with sqlite3.connect('caminho_para_seu_banco_de_dados.db') as conexao:
+			cursor = conexao.cursor()
+			cursor.execute("UPDATE jogadores SET acertos = ? WHERE username = ?", (acertos, username))
+			conexao.commit()

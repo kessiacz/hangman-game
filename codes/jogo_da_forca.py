@@ -8,15 +8,12 @@ from contextlib import closing
 class Forca(Frame):
     def __init__(self, master):
         Frame.__init__(self, master, bg='#363636')
-        # inicializa variáveis
         self.palavra = None
         self.letras_digitadas = None
         self.palavra_secreta = None
-        self.contador = None    
+        self.contador = None
 
-        # inicializa widgets do jogo
         self.create_widgets()
-        # re-inicializa variáveis do jogo
         self.inicio_jogo()
 
     def inicio_jogo(self):
@@ -49,8 +46,7 @@ class Forca(Frame):
         if self.contador <= 0:
             messagebox.showinfo("Alert", "\nVOCÊ PERDEU!!!!!!!!!!            \n")
             messagebox.showinfo("Info", "A palavra secreta era:\n{0}".format(self.palavra))
-
-        # Atualiza na tela as letras encontradas na palavra secreta        
+       
         self.palavra_secreta_label['text'] = self.palavra_secreta
 
         if "_" not in self.palavra_secreta:
@@ -68,12 +64,6 @@ class Forca(Frame):
         palavra = random.choice(lista_de_palavras).split('\n')[0].upper()
         self.palavra= palavra
 
-        # palavra de teste, retire o "#"  e altere o valor da variável
-        # para testar as letras com acento e o Ç ou outros 
-        # comportamentos de algumas palavras
-        #self.palavra = "HOMEM ARANHA" 
-        
-        # Normaliza a palavra em coso de a mesma conter hífem ou espaço 'veja bug do espaço em Todo'
         for i in range(0, len(self.palavra)):
             if self.palavra[i] == "-":
                 self.palavra_secreta.append("-")
@@ -82,8 +72,6 @@ class Forca(Frame):
             else:
                 self.palavra_secreta.append("_")
 
-
-        # Atualiza o palavra secreta na tela
         self.palavra_secreta_label['text'] = self.palavra_secreta
 
 
@@ -214,11 +202,3 @@ class Forca(Frame):
 
         self.palavra_secreta_label = Label(self.frame4, font=("Helvetica", 20), text="", foreground='#fcca28', bg='#363636', padx=10, pady=10)        
         self.palavra_secreta_label.grid(row=1, column=0, sticky="W")
-'''
-forca = Tk()
-forca.title("JOGO DA FORCA")
-forca.resizable(0, 0)
-#forca.geometry("400x300")
-app = Forca(forca).grid()
-forca.mainloop()
-'''
